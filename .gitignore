@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+
+# Experiment artifacts
+wandb/
+results/
+outputs/
+precomputed/
+*.log
+
+# Notebooks
+.ipynb_checkpoints/
+jupyter/
+
+# Local cluster/launcher files
+submit_*.sh
+hpc*.sh
+*job*.yaml
+run_node_*.sh
+
+# Data & model weights
+data/
+*.pth
+*.pt
+*.ckpt
+*.safetensors

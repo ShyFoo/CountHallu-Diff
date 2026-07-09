@@ -1,0 +1,40 @@
+# Latent diffusion (frozen CelebA-HQ VQ-VAE) on SimObject (256x256).
+# Launch: bash scripts/train.sh uncond config/train/simobject.yaml
+num_gpus: 8
+
+training_arguments:
+  diffusion_method: "ldm"
+  seed: 1111
+  train_batch_size: 32            # effective bsz = 256
+  gradient_accumulation_steps: 1
+  eval_batch_size: 4
+  max_train_steps: 300000
+  num_workers: 8
+  save_image_steps: 10000
+  save_model_steps: 100000
+  num_training_timesteps: 1000
+  num_inference_timesteps: 1000
+  beta_schedule: "scaled_linear"
+  prediction_type: "epsilon"
+  use_ema: true
+  learning_rate: 0.00008
+  lr_ref_batch_size: 256
+  adam_weight_decay: 0.01
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 3000
+  mixed_precision: "fp16"
+  logger: "wandb"
+  save_parent_dir: "/path/to/output"
+  push_to_hub: false
+  # hub_model_id: "ShyFoo/CountHallu-DMPipeline-SimObject"
+
+model_arguments:
+  denoising_model: "unet_latent_256"
+  vae_hub_id: "CompVis/ldm-celebahq-256"
+
+data_arguments:
+  img_size: 256
+  dataset_name: "simobject"
+  dataset_root: "/path/to/dataset"
+  # use_hub_dataset: true
+  # hub_dataset_id: "ShyFoo/CountHallu-dataset-SimObject"

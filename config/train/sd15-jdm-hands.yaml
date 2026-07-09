@@ -1,0 +1,45 @@
+# Stage 2 of the SD-1.5 JDM recipe (80k + 40k = 120k steps in total):
+# resume the stage-1 checkpoint, expand conv_in/conv_out to 8 latent channels
+# (image + mask), freeze all intermediate UNet layers, and finetune only the
+# expanded input/output layers ("conv_only") for 40k steps.
+# Launch: bash scripts/train.sh t2i config/train/sd15-jdm-hands.yaml
+num_gpus: 4
+
+training_arguments:
+  diffusion_method: "jdm"
+  finetune_strategy: "conv_only"
+  prompt: "A single human hand."
+  seed: 1111
+  train_batch_size: 16            # effective bsz = 64
+  gradient_accumulation_steps: 1
+  eval_batch_size: 1
+  max_train_steps: 40000
+  num_workers: 8
+  save_image_steps: 1000
+  save_model_steps: 10000
+  num_training_timesteps: 1000
+  num_inference_timesteps: 28
+  prediction_type: "epsilon"
+  use_ema: true
+  learning_rate: 0.001
+  lr_ref_batch_size: 64
+  adam_weight_decay: 0.01
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 500
+  mixed_precision: "bf16"
+  logger: "wandb"
+  save_parent_dir: "/path/to/output"
+  push_to_hub: false
+
+model_arguments:
+  denoising_model: "stable-diffusion-1-5-jdm"
+  # If stage 1 used finetune_strategy "full": point at its saved pipeline.
+  pretrained_model: "/path/to/output/<sd15-hands-run-id>/final-step-80000"
+  # If stage 1 used "lora": load the base model and merge the adapter instead.
+  # pretrained_model: "stable-diffusion-v1-5/stable-diffusion-v1-5"
+  # pretrained_lora: "/path/to/output/<sd15-hands-run-id>/final-step-80000"
+
+data_arguments:
+  img_size: 512
+  dataset_name: "realhand"
+  dataset_root: "/path/to/dataset"

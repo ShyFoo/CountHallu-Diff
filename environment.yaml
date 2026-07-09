@@ -1,0 +1,10 @@
+# Minimal conda environment; all Python dependencies come from pyproject.toml.
+#   conda env create -f environment.yaml
+#   conda activate counthallu
+#   pip install -e .
+name: counthallu
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip

@@ -1,0 +1,17 @@
+# Evaluation paths for RealHand (JDM) (these values override eval_uncond.py CLI flags).
+eval_batch_size: 4
+img_size: 256
+num_workers: 4
+dataset_root: "/path/to/dataset"
+save_root: "/path/to/results"
+diffusion_pipeline_path: "/path/to/output/<realhand-jdm-run-id>"
+counting_model_path: "/path/to/models/counting_model/realhand/model.pt"       # YOLO detector
+quality_cls_model_path: "/path/to/models/quality_cls_model/realhand/model.pth"
+
+# Hub alternatives (auth via `huggingface-cli login` or HF_TOKEN):
+# use_hub_model: true
+# hub_diffusion_pipeline_id: "ShyFoo/CountHallu-DMPipeline-RealHand-JDM"
+# hub_counting_model_id: "ShyFoo/CountHallu-counting_model-RealHand"
+# hub_quality_cls_model_id: "ShyFoo/CountHallu-quality_cls_model-RealHand"
+# use_hub_dataset: true
+# hub_dataset_id: "ShyFoo/CountHallu-dataset-RealHand"

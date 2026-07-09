@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "counthallu"
+version = "2.0.0"
+description = "Measuring and analyzing counting hallucinations in diffusion models"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.4",
+    "torchvision",
+    "accelerate>=1.3",
+    "diffusers~=0.32.2",   # custom pipelines rely on diffusers internals
+    "transformers>=4.48",
+    "datasets>=3.0",
+    "peft>=0.14",
+    "huggingface-hub",
+    "timm>=1.0",
+    "ultralytics>=8.3",
+    "wandb",
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "pillow",
+    "pyyaml",
+    "requests",
+    "tqdm",
+]
+
+[tool.setuptools.packages.find]
+include = ["counthallu*"]

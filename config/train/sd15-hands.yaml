@@ -1,0 +1,45 @@
+# Stage 1 of the SD-1.5 JDM recipe (80k + 40k = 120k steps in total):
+# finetune SD-1.5 on RealHand images (no masks) for 80k steps.
+# Stage 2 (sd15-jdm-hands.yaml) continues from this run's final checkpoint.
+# Launch: bash scripts/train.sh t2i config/train/sd15-hands.yaml
+num_gpus: 4
+
+training_arguments:
+  diffusion_method: "ldm"
+  # Stage 1 works with either strategy. "full" saves a complete pipeline;
+  # "lora" saves only an adapter — stage 2 then needs `pretrained_lora`
+  # (see the comments in sd15-jdm-hands.yaml).
+  finetune_strategy: "full"
+  # lora_rank: 32
+  prompt: "A single human hand."
+  seed: 1111
+  train_batch_size: 16            # effective bsz = 64
+  gradient_accumulation_steps: 1
+  eval_batch_size: 1
+  max_train_steps: 80000
+  num_workers: 8
+  save_image_steps: 2000
+  save_model_steps: 20000
+  num_training_timesteps: 1000
+  num_inference_timesteps: 28
+  prediction_type: "epsilon"
+  use_ema: true
+  learning_rate: 0.0001
+  lr_ref_batch_size: 64
+  adam_weight_decay: 0.01
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 1000
+  mixed_precision: "bf16"
+  logger: "wandb"
+  save_parent_dir: "/path/to/output"
+  push_to_hub: false
+
+model_arguments:
+  denoising_model: "stable-diffusion-1-5"
+  pretrained_model: "stable-diffusion-v1-5/stable-diffusion-v1-5"
+  cache_dir: "/path/to/hf-cache"
+
+data_arguments:
+  img_size: 512
+  dataset_name: "realhand"
+  dataset_root: "/path/to/dataset"

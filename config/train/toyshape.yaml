@@ -1,0 +1,38 @@
+# Pixel-space DDPM on ToyShape (128x128).
+# Launch: bash scripts/train.sh uncond config/train/toyshape.yaml
+num_gpus: 4
+
+training_arguments:
+  diffusion_method: "ddpm"
+  seed: 1111
+  train_batch_size: 64            # effective bsz = num_gpus * bsz * grad_accum = 256
+  gradient_accumulation_steps: 1
+  eval_batch_size: 4
+  max_train_steps: 150000
+  num_workers: 8
+  save_image_steps: 10000
+  save_model_steps: 50000
+  num_training_timesteps: 1000
+  num_inference_timesteps: 1000
+  beta_schedule: "linear"
+  prediction_type: "epsilon"
+  use_ema: true
+  learning_rate: 0.0001
+  lr_ref_batch_size: 256
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 8000
+  mixed_precision: "fp16"
+  logger: "wandb"
+  save_parent_dir: "/path/to/output"
+  push_to_hub: false
+  # hub_model_id: "ShyFoo/CountHallu-DMPipeline-ToyShape"
+
+model_arguments:
+  denoising_model: "unet_pixel_128"
+
+data_arguments:
+  img_size: 128
+  dataset_name: "toyshape"
+  dataset_root: "/path/to/dataset"
+  # use_hub_dataset: true
+  # hub_dataset_id: "ShyFoo/CountHallu-dataset-ToyShape"
