@@ -4,9 +4,7 @@ import os
 
 from torch.utils.data import DataLoader
 
-from counthallu.datasets.lsun import LsunBedrooms
 from counthallu.datasets.realhand import RealHand
-from counthallu.datasets.realobject import RealObject
 from counthallu.datasets.simobject import SimObject
 from counthallu.datasets.toyshape import ToyShape
 
@@ -16,8 +14,6 @@ DATASETS = {
     "toyshape": ToyShape,
     "simobject": SimObject,
     "realhand": RealHand,
-    "realobject": RealObject,
-    "lsun": LsunBedrooms,
 }
 
 

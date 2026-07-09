@@ -22,24 +22,6 @@ def seed_all(seed):
         torch.backends.cudnn.benchmark = False
 
 
-class ResizeWithPadding:
-    """Resize the longer side to ``size`` and pad the rest, keeping aspect ratio."""
-
-    def __init__(self, size=256, fill=0):
-        self.size = size
-        self.fill = fill
-
-    def __call__(self, img):
-        w, h = img.size
-        scale = self.size / max(w, h)
-        new_w, new_h = int(w * scale), int(h * scale)
-        img = img.resize((new_w, new_h), Image.BILINEAR)
-
-        canvas = Image.new("RGB", (self.size, self.size), self.fill)
-        canvas.paste(img, ((self.size - new_w) // 2, (self.size - new_h) // 2))
-        return canvas
-
-
 def extract_into_tensor(arr, timesteps, broadcast_shape):
     """Gather ``arr[timesteps]`` and right-pad dims to ``broadcast_shape``."""
     if not isinstance(arr, torch.Tensor):

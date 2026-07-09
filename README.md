@@ -74,7 +74,7 @@ This repository provides everything needed to *measure* it:
 
 ```
 counthallu/
-├── datasets/        # ToyShape / SimObject / RealHand / RealObject / LSUN loaders
+├── datasets/        # ToyShape / SimObject / RealHand loaders
 │   └── toyshape.py  #   also generates the synthetic ToyShape dataset
 ├── models/
 │   ├── unet.py            # UNet presets for unconditional training
