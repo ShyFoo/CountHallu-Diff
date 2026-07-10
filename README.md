@@ -219,6 +219,24 @@ python -m counthallu.eval.eval_t2i --pipeline auto --model sd-3.5-medium \
     --save_root ./results/t2i/sd35
 ```
 
+<div align="center">
+<table>
+  <tr>
+    <td align="center"><img src="assets/count_valid_examples_t2i_hand.png" alt="Counting-correct samples from the pretrained SD-3.5-medium"></td>
+    <td align="center"><img src="assets/count_hallu_examples_t2i_hand.png" alt="Counting hallucinations from the pretrained SD-3.5-medium"></td>
+    <td align="center"><img src="assets/other_failure_examples_t2i_hand.png" alt="Visual failures from the pretrained SD-3.5-medium"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Counting-correct</b></td>
+    <td align="center"><b>Counting hallucination</b></td>
+    <td align="center"><b>Visual failure</b></td>
+  </tr>
+</table>
+<p><em>The three verdicts on samples from the pretrained SD-3.5-medium: five-fingered
+hands, hands with the wrong number of fingers, and non-counting failures filtered
+out by the counting-ready indicator.</em></p>
+</div>
+
 Standalone metrics are also available as modules, e.g.
 `python -m counthallu.metrics.fid REAL_DIR GEN_DIR --device cuda:0`.
 
