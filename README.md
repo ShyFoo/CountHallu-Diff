@@ -10,8 +10,6 @@
 **Shuai Fu, Jian Zhou, Qi Chen, Huang Jing, Huy Anh Nguyen,<br>
 Xiaohan Liu, Zhixiong Zeng, Lin Ma, Quanshi Zhang, Qi Wu**
 
-*Official implementation of* **[Counting Hallucinations in Diffusion Models](https://arxiv.org/abs/2510.13080)**
-
 [Paper](https://arxiv.org/abs/2510.13080) ·
 [Datasets](#-data-preparation) ·
 [Training](#-training) ·
