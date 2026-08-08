@@ -7,7 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.4%2B-EE4C2C.svg)](https://pytorch.org/)
 
-**Shuai Fu, Jian Zhou, Qi Chen, Huang Jing, Huy Anh Nguyen,<br>
+**Shuai Fu, Jian Zhou, Qi Chen, Jing Huang, Huy Anh Nguyen,<br>
 Xiaohan Liu, Zhixiong Zeng, Lin Ma, Quanshi Zhang, Qi Wu**
 
 [Paper](https://arxiv.org/abs/2510.13080) ·
