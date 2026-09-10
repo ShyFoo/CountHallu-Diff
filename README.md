@@ -224,9 +224,9 @@ python -m counthallu.eval.eval_t2i --pipeline auto --model sd-3.5-medium \
     <td align="center"><img src="assets/other_failure_examples_t2i_hand.png" alt="Non-counting failures from the pretrained SD-3.5-medium"></td>
   </tr>
   <tr>
-    <td align="center"><b>Counting-correct</b></td>
-    <td align="center"><b>Counting hallucination</b></td>
-    <td align="center"><b>Non-counting failure</b></td>
+    <td align="center"><b>Counting-correct samples</b></td>
+    <td align="center"><b>Counting hallucinations</b></td>
+    <td align="center"><b>Non-counting failures</b></td>
   </tr>
 </table>
 <p><em>The three verdicts on samples from the pretrained SD-3.5-medium: five-fingered
