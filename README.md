@@ -14,14 +14,13 @@ Xiaohan Liu, Zhixiong Zeng, Lin Ma, Quanshi Zhang, Qi Wu**
 [Datasets](#-data-preparation) ·
 [Training](#-training) ·
 [Evaluation](#-evaluation) ·
-[Citation](#-citation)
 
 </div>
 
 ---
 
 Diffusion models still generate samples that conflict with real-world
-knowledge — a hand with six fingers, a duplicate cup floating beside another —
+knowledge, such as a hand with six fingers, a duplicate cup floating beside another,
 even when such patterns never appear in the training data. We call this
 failure mode **counting hallucination**: generating an incorrect number of
 instances or structured objects.
