@@ -249,7 +249,3 @@ If you find this work useful, please consider citing:
   year={2025}
 }
 ```
-
-## 📄 License
-
-This project is released under the [Apache License 2.0](LICENSE).
